@@ -1,0 +1,36 @@
+# Base class
+class Superhero:
+    def __init__(self, name, power, city):
+        self.name = name
+        self.power = power
+        self._city = city  # Protected attribute
+        self.__identity = "Secret"  # Private attribute
+
+    def reveal_identity(self):
+        return f"{self.name}'s true identity is {self.__identity}"
+
+    def set_identity(self, identity):
+        self.__identity = identity
+
+    def use_power(self):
+        return f"{self.name} uses {self.power} to save {self._city}!"
+
+# Subclass with polymorphism
+class FlyingHero(Superhero):
+    def use_power(self):
+        return f"{self.name} soars through the sky with {self.power}!"
+
+# Another subclass
+class TechHero(Superhero):
+    def use_power(self):
+        return f"{self.name} hacks the system with {self.power}!"
+
+# Create objects
+hero1 = FlyingHero("SkyFlash", "Flight", "Metroville")
+hero2 = TechHero("CyberKnight", "Tech Manipulation", "NeoCity")
+
+# Output
+print(hero1.use_power())
+print(hero2.use_power())
+hero2.set_identity("Liam Knight")
+print(hero2.reveal_identity())
